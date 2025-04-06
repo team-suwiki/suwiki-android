@@ -113,10 +113,6 @@ fun OpenLectureRoute(
     viewModel.initData()
   }
 
-  listState.OnBottomReached {
-    viewModel.getOpenLectureList(needClear = false)
-  }
-
   OpenLectureScreen(
     uiState = uiState,
     listState = listState,
@@ -218,10 +214,20 @@ fun OpenLectureScreen(
             onClickClearButton = onClickClearButton,
             onValueChange = onValueChangeSearch,
           )
+
+
+          Text(
+            modifier = Modifier
+              .padding(top = 10.dp, end = 20.dp)
+              .align(Alignment.End),
+            text = "최근 갱신일: ${uiState.lastUpdatedDate ?: "확인 중"}",
+            style = SuwikiTheme.typography.body7,
+            color = Gray95,
+          )
         }
       },
     ) {
-      if (uiState.openLectureList.isEmpty()) {
+      if (uiState.openLectureList.isEmpty() && uiState.isLoading.not()) {
         Column(
           modifier = Modifier.fillMaxSize(),
           horizontalAlignment = Alignment.CenterHorizontally,

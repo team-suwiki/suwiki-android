@@ -2,6 +2,7 @@ package com.suwiki.core.database.di
 
 import android.content.Context
 import androidx.room.Room
+import com.suwiki.core.database.database.OpenLectureDatabase
 import com.suwiki.core.database.database.OpenMajorDatabase
 import com.suwiki.core.database.database.TimetableDatabase
 import com.suwiki.core.database.database.migration.TIMETABLE_MIGRATION_1_2
@@ -46,9 +47,20 @@ object DatabaseModule {
       .fallbackToDestructiveMigration()
       .build()
   }
+
+  @Provides
+  @Singleton
+  fun provideOpenLectureDatabase(@ApplicationContext context: Context): OpenLectureDatabase {
+    return Room.databaseBuilder(
+      context,
+      OpenLectureDatabase::class.java,
+      DatabaseName.OPEN_LECTURE
+    ).build()
+  }
 }
 
 object DatabaseName {
   const val OPEN_MAJOR = "open-major-database"
   const val TIMETABLE = "timetable-list-database"
+  const val OPEN_LECTURE = "open-lecture-database"
 }

@@ -8,22 +8,18 @@ import javax.inject.Inject
 class GetOpenLectureListUseCase @Inject constructor(
   private val openLectureRepository: OpenLectureRepository,
 ) {
-  suspend operator fun invoke(param: Param): Result<OpenLectureData> = runCatchingIgnoreCancelled {
+  operator fun invoke(param: Param) =
     with(param) {
-      openLectureRepository.getOpenLectureList(
-        cursorId = cursorId,
-        size = size,
-        keyword = keyword,
-        major = major,
-        grade = grade,
-      )
+      openLectureRepository
+        .getOpenLectureList(
+          lectureOrProfessorName = lectureOrProfessorName,
+          major = major,
+          grade = grade,
+        )
     }
-  }
 
   data class Param(
-    val cursorId: Long,
-    val size: Long = 20,
-    val keyword: String?,
+    val lectureOrProfessorName: String?,
     val major: String?,
     val grade: Int?,
   )

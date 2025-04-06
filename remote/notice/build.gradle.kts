@@ -14,4 +14,8 @@ dependencies {
   implementation(libs.retrofit.core)
   implementation(libs.kotlinx.serialization.json)
   implementation(libs.kotlinx.datetime)
+
+  val bom = libs.firebase.bom
+  add("implementation", platform(bom))
+  implementation(libs.bundles.firebase)
 }

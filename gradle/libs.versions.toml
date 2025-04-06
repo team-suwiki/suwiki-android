@@ -64,6 +64,7 @@ protobuf = "3.24.4"
 espresso-core = "3.5.1"
 junit-ktx = "1.1.5"
 androidx-test-runner = "1.5.2"
+junit = "4.12"
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
@@ -170,6 +171,7 @@ encrypted-datastore-preference-security = { group = "tech.thdev", name = "useful
 
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database-ktx" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
 
 ted-permission = { group = "io.github.ParkSangGwon", name = "tedpermission-normal", version.ref = "ted-permission" }
@@ -190,9 +192,10 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 
 protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
 protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 [bundles]
-firebase = ["firebase-analytics"]
+firebase = ["firebase-analytics", "firebase-database"]
 androidx-lifecycle = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx"]
 androidx-navigation = ["navigation-fragment-ktx", "navigation-ui-ktx"]
 coroutine = ["kotlinx-coroutines-android", "kotlinx-coroutines-core"]

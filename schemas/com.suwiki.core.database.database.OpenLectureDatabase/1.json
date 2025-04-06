@@ -2,16 +2,28 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d388602654d094c34e2c718a802d0243",
+    "identityHash": "a9fed779395cf5534baf92fbef19edd1",
     "entities": [
       {
         "tableName": "OpenLectureEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`number` INTEGER NOT NULL, `major` TEXT NOT NULL, `grade` TEXT NOT NULL, `classNumber` TEXT NOT NULL, `classDivideNumber` TEXT NOT NULL, `className` TEXT NOT NULL, `classification` TEXT NOT NULL, `professor` TEXT NOT NULL, `time` TEXT NOT NULL, `credit` TEXT NOT NULL, PRIMARY KEY(`number`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `type` TEXT NOT NULL, `major` TEXT NOT NULL, `grade` INTEGER NOT NULL, `professorName` TEXT NOT NULL, `cellList` TEXT NOT NULL)",
         "fields": [
           {
-            "fieldPath": "number",
-            "columnName": "number",
+            "fieldPath": "id",
+            "columnName": "id",
             "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -23,56 +35,26 @@
           {
             "fieldPath": "grade",
             "columnName": "grade",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "professorName",
+            "columnName": "professorName",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "classNumber",
-            "columnName": "classNumber",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "classDivideNumber",
-            "columnName": "classDivideNumber",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "className",
-            "columnName": "className",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "classification",
-            "columnName": "classification",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "professor",
-            "columnName": "professor",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "time",
-            "columnName": "time",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "credit",
-            "columnName": "credit",
+            "fieldPath": "cellList",
+            "columnName": "cellList",
             "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
-          "autoGenerate": false,
+          "autoGenerate": true,
           "columnNames": [
-            "number"
+            "id"
           ]
         },
         "indices": [],
@@ -82,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd388602654d094c34e2c718a802d0243')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a9fed779395cf5534baf92fbef19edd1')"
     ]
   }
 }

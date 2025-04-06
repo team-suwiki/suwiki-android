@@ -9,7 +9,5 @@ interface RemoteNoticeDataSource {
 
   suspend fun getNoticeDetail(id: Long): NoticeDetail
 
-  suspend fun checkUpdateMandatory(
-    versionCode: Long,
-  ): Boolean
+  suspend fun getMinVersionCode(): Long?
 }

@@ -20,6 +20,7 @@ data class OpenLectureState(
   val showSelectCellColorBottomSheet: Boolean = false,
   val selectedTimetableCellColor: TimetableCellColor = TimetableCellColor.BROWN,
   val isLoading: Boolean = false,
+  val lastUpdatedDate: String? = null,
 )
 
 fun List<Cell>.toText(context: Context): String {
