@@ -193,21 +193,6 @@ fun OpenMajorScreen(
               )
             }
           }
-
-          OpenMajorTap.BOOKMARK -> {
-            if (uiState.showBookmarkedOpenMajorSearchEmptyResultScreen) {
-              EmptyText(stringResource(R.string.open_major_empty_search_result))
-            } else if (uiState.showBookmarkedOpenMajorEmptyScreen) {
-              EmptyText(stringResource(R.string.open_major_empty_bookmark))
-            } else {
-              OpenMajorLazyColumn(
-                listState = bookmarkedOpenMajorListState,
-                openMajorList = uiState.filteredBookmarkedOpenMajorList,
-                onClickOpenMajorContainer = onClickOpenMajorContainer,
-                onClickOpenMajorBookmark = onClickOpenMajorBookmark,
-              )
-            }
-          }
         }
       }
 

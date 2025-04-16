@@ -56,18 +56,6 @@ fun OpenMajorContainer(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Start,
   ) {
-    Icon(
-      painter = painterResource(id = R.drawable.ic_filter_stared),
-      contentDescription = "",
-      modifier = Modifier
-        .size(24.dp)
-        .suwikiClickable(
-          onClick = onClickStar,
-          rippleEnabled = false,
-        ),
-      tint = if (isStared) Primary else GrayDA,
-    )
-    Spacer(modifier = Modifier.width(4.dp))
     Text(
       text = text,
       style = SuwikiTheme.typography.body2,

@@ -91,10 +91,6 @@ class OpenMajorViewModel @Inject constructor(
   }
 
   fun syncPagerState(currentPage: Int) = intent {
-    if (isLoggedIn.not() && currentPage == OpenMajorTap.BOOKMARK.position) {
-      postSideEffect(OpenMajorSideEffect.ShowNeedLoginToast)
-      return@intent
-    }
     reduce { state.copy(currentPage = currentPage) }
   }
 
@@ -125,7 +121,7 @@ class OpenMajorViewModel @Inject constructor(
       allOpenMajorList.addAll((it + firebaseOpenMajor).distinct())
       reduceOpenMajorList()
     }.catch {
-      postSideEffect(OpenMajorSideEffect.HandleException(it))
+//      postSideEffect(OpenMajorSideEffect.HandleException(it))
     }.launchIn(viewModelScope)
   }
 
@@ -152,7 +148,7 @@ class OpenMajorViewModel @Inject constructor(
         if (it is AuthorizationException) {
           isLoggedIn = false
         } else {
-          postSideEffect(OpenMajorSideEffect.HandleException(it))
+//          postSideEffect(OpenMajorSideEffect.HandleException(it))
         }
       }
   }

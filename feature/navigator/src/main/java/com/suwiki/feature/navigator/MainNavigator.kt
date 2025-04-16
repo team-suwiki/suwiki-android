@@ -62,8 +62,6 @@ internal class MainNavigator(
 
     when (tab) {
       MainTab.TIMETABLE -> navController.navigateTimetable(navOptions)
-      MainTab.LECTURE_EVALUATION -> navController.navigateLectureEvaluation(navOptions)
-      MainTab.MY_INFO -> navController.navigateMyInfo(navOptions)
     }
   }
 

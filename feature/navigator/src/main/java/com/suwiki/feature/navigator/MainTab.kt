@@ -14,16 +14,6 @@ internal enum class MainTab(
     contentDescription = "시간표",
     route = TimetableRoute.route,
   ),
-  LECTURE_EVALUATION(
-    iconResId = R.drawable.ic_bottom_navigation_evaluation,
-    contentDescription = "강의평가",
-    route = LectureEvaluationRoute.route,
-  ),
-  MY_INFO(
-    iconResId = R.drawable.ic_bottom_navigation_myinfo,
-    contentDescription = "내 정보",
-    route = MyInfoRoute.route,
-  ),
   ;
 
   companion object {

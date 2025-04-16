@@ -80,27 +80,6 @@ internal fun MainScreen(
         navController = navigator.navController,
         startDestination = navigator.startDestination,
       ) {
-        loginNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateFindId = navigator::navigateFindId,
-          navigateFindPassword = navigator::navigateFindPassword,
-          navigateSignup = navigator::navigateSignup,
-          handleException = viewModel::handleException,
-        )
-
-        signupNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          handleException = viewModel::handleException,
-          navigateSignupComplete = navigator::navigateSignupComplete,
-          navigateLogin = {
-            navigator.navigateLogin(
-              navOptions {
-                popUpTo(navigator.startDestination)
-              },
-            )
-          },
-        )
-
         openMajorNavGraph(
           popBackStack = navigator::popBackStackIfNotHome,
           popBackStackWithArgument = { openMajor ->
@@ -125,56 +104,6 @@ internal fun MainScreen(
           onShowToast = viewModel::onShowToast,
           navigateOpenMajor = navigator::navigateOpenMajor,
           navigateCellEditor = navigator::navigateCellEditor,
-        )
-
-        lectureEvaluationNavGraph(
-          padding = innerPadding,
-          argumentName = OpenMajorRoute.ARGUMENT_NAME,
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateLogin = navigator::navigateLogin,
-          navigateSignUp = navigator::navigateSignup,
-          navigateLectureEvaluationEditor = navigator::navigateLectureEvaluationEditor,
-          navigateExamEvaluationEditor = navigator::navigateExamEvaluationEditor,
-          handleException = viewModel::handleException,
-          navigateOpenMajor = navigator::navigateOpenMajor,
-          onShowToast = viewModel::onShowToast,
-          navigateLectureEvaluationDetail = navigator::navigateLectureEvaluationDetail,
-        )
-
-        myEvaluationNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateLectureEvaluationEditor = navigator::navigateLectureEvaluationEditor,
-          navigateExamEvaluationEditor = navigator::navigateExamEvaluationEditor,
-          handleException = viewModel::handleException,
-        )
-
-        myEvaluationEditNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          onShowToast = viewModel::onShowToast,
-          handleException = viewModel::handleException,
-        )
-
-        myInfoNavGraph(
-          padding = innerPadding,
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateNotice = navigator::navigateNotice,
-          navigateMyEvaluation = navigator::navigateMyEvaluation,
-          navigateMyAccount = navigator::navigateMyAccount,
-          navigateResetPassword = navigator::navigateResetPassword,
-          navigateQuit = navigator::navigateQuit,
-          navigateFindPassword = navigator::navigateFindPassword,
-          navigateLogin = navigator::navigateLogin,
-          navigateMyPoint = navigator::navigateMyPoint,
-          navigateBanHistory = navigator::navigateBanHistory,
-          handleException = viewModel::handleException,
-          onShowToast = viewModel::onShowToast,
-        )
-
-        noticeNavGraph(
-          padding = innerPadding,
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateNoticeDetail = navigator::navigateNoticeDetail,
-          handleException = viewModel::handleException,
         )
       }
 
@@ -201,14 +130,6 @@ internal fun MainScreen(
       SuwikiToast(
         visible = uiState.toastVisible,
         message = uiState.toastMessage,
-      )
-    },
-    bottomBar = {
-      MainBottomBar(
-        visible = navigator.shouldShowBottomBar(),
-        tabs = MainTab.entries.toImmutableList(),
-        currentTab = navigator.currentTab,
-        onTabSelected = navigator::navigate,
       )
     },
   )
