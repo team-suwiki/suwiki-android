@@ -9,4 +9,7 @@ interface LocalOpenMajorDataSource {
   suspend fun getLocalOpenMajorList(): List<OpenMajor>
   suspend fun saveAllOpenMajors(majors: List<OpenMajor>)
   suspend fun deleteAllOpenMajors()
+
+  fun isSuwikiServerEndPopupVisible(): Flow<Boolean>
+  suspend fun setShowSuwikiServerEndPopup(visible: Boolean)
 }

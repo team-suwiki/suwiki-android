@@ -2,6 +2,7 @@ package com.suwiki.local.openmajor.datasource
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import com.suwiki.core.android.Dispatcher
@@ -26,6 +27,7 @@ class LocalOpenMajorDataSourceImpl @Inject constructor(
 
   companion object {
     private val OPEN_MAJOR_VERSION = floatPreferencesKey("[KEY] is open major version")
+    private val SUWIKI_SERVICE_END_POPUP = booleanPreferencesKey("[KEY] is suwiki service end popup")
   }
 
   private val data: Flow<Preferences>
@@ -48,5 +50,13 @@ class LocalOpenMajorDataSourceImpl @Inject constructor(
 
   override suspend fun deleteAllOpenMajors() = withContext(ioDispatcher) {
     db.openMajorDao().deleteAll()
+  }
+
+  override fun isSuwikiServerEndPopupVisible(): Flow<Boolean> =
+    data.map { it[SUWIKI_SERVICE_END_POPUP] ?: true }
+
+
+  override suspend fun setShowSuwikiServerEndPopup(visible: Boolean) {
+    dataStore.edit { it[SUWIKI_SERVICE_END_POPUP] = visible }
   }
 }

@@ -9,6 +9,8 @@ android {
 
 dependencies {
   implementation(projects.domain.notice)
+  implementation(projects.local.openmajor)
+  implementation(projects.data.openmajor)
 
   implementation(projects.feature.lectureevaluation.editor)
   implementation(projects.feature.lectureevaluation.my)
