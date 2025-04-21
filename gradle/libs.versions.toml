@@ -2,7 +2,7 @@
 android-gradle-plugin = "8.9.1"
 material = "1.10.0"
 espresso = "3.4.0"
-ksp = "1.9.10-1.0.13"
+ksp = "2.0.21-1.0.28"
 google-service = "4.3.15"
 firebase-bom = "32.7.0"
 firebase-crashlytics = "2.9.9"
@@ -31,7 +31,7 @@ androidx-recycler-view = "1.3.1"
 androidx-splash-screen = "1.0.1"
 androidx-datastore = "1.0.0"
 
-kotlin = "1.9.20"
+kotlin = "2.0.21"
 kotlinx-coroutines = "1.7.3"
 kotlinx-serialization-json = "1.5.1"
 kotlinx-datetime = "0.4.0"
@@ -44,11 +44,12 @@ retrofit = "2.9.0"
 retrofit-kotlinx-serialization-json = "1.0.0"
 okhttp = "4.11.0"
 
-hilt = "2.50"
-room = "2.5.2"
+hilt = "2.56"
+hiltExt = "2.56"
+room = "2.7.0"
 
 timber = "5.0.1"
-encrypted-datastore = "1.7.21-1.0.8-1.1.0-alpha01"
+encrypted-datastore = "2.0.21-1.0.28-1.2.0"
 ted-permission = "3.3.0"
 coil = "2.4.0"
 lottie = "6.0.0"
@@ -59,7 +60,7 @@ junit4 = "4.13.2"
 
 
 protobuf-plugin = "0.9.4"
-protobuf = "3.24.4"
+protobuf = "3.25.5"
 
 espresso-core = "3.5.1"
 junit-ktx = "1.1.5"
@@ -82,6 +83,9 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-service" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf-plugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
 
 # Plugins defined by this project
 suwiki-android-application = { id = "suwiki.android.application", version = "unspecified" }
@@ -93,8 +97,6 @@ suwiki-java-library = { id = "suwiki.java.library", version = "unspecified" }
 suwiki-android-presentation-compose = { id = "suwiki.android.presentation.compose", version = "unspecified" }
 suwiki-android-remote = { id = "suwiki.android.remote", version = "unspecified" }
 suwiki-android-data = { id = "suwiki.android.data", version = "unspecified" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
 
 [libraries]
 # Dependencies of the included build-logic
@@ -137,10 +139,10 @@ orbit-compose = { group = "org.orbit-mvi", name = "orbit-compose", version.ref =
 orbit-test = { group = "org.orbit-mvi", name = "orbit-test", version.ref = "orbit" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltExt" }
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 hilt-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
-hilt-testing-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-testing-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltExt" }
 
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }

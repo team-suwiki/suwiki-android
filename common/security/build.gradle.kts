@@ -18,10 +18,6 @@ dependencies {
   implementation(libs.androidx.datastore.core)
   implementation(libs.androidx.datastore.preferences)
 
-  ksp(libs.encrypted.datastore.preference.ksp)
-  implementation(libs.encrypted.datastore.preference.ksp.annotations)
-  implementation(libs.encrypted.datastore.preference.security)
-
   implementation(libs.timber)
 
   testImplementation(libs.junit4)
