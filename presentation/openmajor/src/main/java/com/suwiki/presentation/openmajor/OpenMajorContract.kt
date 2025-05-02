@@ -13,8 +13,6 @@ data class OpenMajorState(
   val isLoading: Boolean = false,
 ) {
   val showAllOpenMajorEmptySearchResultScreen: Boolean = searchValue.isNotEmpty() && filteredAllOpenMajorList.isEmpty()
-  val showBookmarkedOpenMajorSearchEmptyResultScreen: Boolean = searchValue.isNotEmpty() && filteredBookmarkedOpenMajorList.isEmpty()
-  val showBookmarkedOpenMajorEmptyScreen: Boolean = searchValue.isEmpty() && filteredBookmarkedOpenMajorList.isEmpty()
 }
 
 sealed interface OpenMajorSideEffect {

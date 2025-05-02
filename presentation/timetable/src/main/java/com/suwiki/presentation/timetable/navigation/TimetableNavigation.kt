@@ -17,10 +17,6 @@ import com.suwiki.presentation.timetable.timetableeditor.TimetableEditorRoute
 import com.suwiki.presentation.timetable.timetablelist.TimetableListRoute
 import kotlinx.serialization.json.Json
 
-fun NavController.navigateTimetable(navOptions: NavOptions) {
-  navigate(TimetableRoute.route, navOptions)
-}
-
 fun NavController.navigateTimetableEditor(argument: TimetableEditorArgument = TimetableEditorArgument()) {
   navigate(TimetableRoute.timetableEditorRoute(Json.encodeToUri(argument)))
 }

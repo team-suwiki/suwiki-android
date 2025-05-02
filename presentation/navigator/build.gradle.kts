@@ -10,11 +10,6 @@ android {
 dependencies {
   implementation(projects.domain.notice)
 
-  implementation(projects.presentation.lectureevaluation)
-  implementation(projects.presentation.login)
-  implementation(projects.presentation.myinfo)
-  implementation(projects.presentation.notice)
   implementation(projects.presentation.openmajor)
-  implementation(projects.presentation.signup)
   implementation(projects.presentation.timetable)
 }

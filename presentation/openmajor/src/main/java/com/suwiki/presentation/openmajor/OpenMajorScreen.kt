@@ -85,7 +85,6 @@ fun OpenMajorRoute(
   }
 
   val allOpenMajorListState = rememberLazyListState()
-  val bookmarkedOpenMajorListState = rememberLazyListState()
 
   val onReachedBottomAllOpenMajor by remember {
     derivedStateOf {
@@ -93,18 +92,9 @@ fun OpenMajorRoute(
     }
   }
 
-  val onReachedBottomBookmarkedOpenMajor by remember {
-    derivedStateOf {
-      bookmarkedOpenMajorListState.isScrolledToEnd()
-    }
-  }
 
   LaunchedEffect(onReachedBottomAllOpenMajor) {
     viewModel.changeBottomShadowVisible(!onReachedBottomAllOpenMajor)
-  }
-
-  LaunchedEffect(onReachedBottomBookmarkedOpenMajor) {
-    viewModel.changeBottomShadowVisible(!onReachedBottomBookmarkedOpenMajor)
   }
 
   LaunchedEffect(key1 = Unit) {
@@ -115,11 +105,9 @@ fun OpenMajorRoute(
     uiState = uiState,
     pagerState = pagerState,
     allOpenMajorListState = allOpenMajorListState,
-    bookmarkedOpenMajorListState = bookmarkedOpenMajorListState,
     onClickClose = viewModel::popBackStack,
     onClickConfirmButton = viewModel::popBackStackWithArgument,
     onClickOpenMajorContainer = viewModel::updateSelectedOpenMajor,
-    onClickOpenMajorBookmark = viewModel::toggleBookmark,
     onClickTab = viewModel::syncPagerState,
     onValueChangeSearchBar = viewModel::updateSearchValue,
     onClickSearchBarClearButton = { viewModel.updateSearchValue("") },
@@ -132,11 +120,9 @@ fun OpenMajorScreen(
   uiState: OpenMajorState = OpenMajorState(),
   pagerState: PagerState = rememberPagerState(pageCount = { OPEN_MAJOR_PAGE_COUNT }),
   allOpenMajorListState: LazyListState = rememberLazyListState(),
-  bookmarkedOpenMajorListState: LazyListState = rememberLazyListState(),
   onClickClose: () -> Unit = {},
   onClickConfirmButton: () -> Unit = {},
   onClickOpenMajorContainer: (String) -> Unit = {},
-  onClickOpenMajorBookmark: (String) -> Unit = {},
   onValueChangeSearchBar: (String) -> Unit = {},
   onClickSearchBarClearButton: () -> Unit = {},
   onClickTab: (Int) -> Unit = {},
@@ -189,7 +175,6 @@ fun OpenMajorScreen(
                 listState = allOpenMajorListState,
                 openMajorList = uiState.filteredAllOpenMajorList,
                 onClickOpenMajorContainer = onClickOpenMajorContainer,
-                onClickOpenMajorBookmark = onClickOpenMajorBookmark,
               )
             }
           }
@@ -237,7 +222,6 @@ private fun OpenMajorLazyColumn(
   listState: LazyListState,
   openMajorList: PersistentList<OpenMajor>,
   onClickOpenMajorContainer: (String) -> Unit = {},
-  onClickOpenMajorBookmark: (String) -> Unit = {},
 ) {
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
@@ -252,9 +236,7 @@ private fun OpenMajorLazyColumn(
         OpenMajorContainer(
           text = name,
           isChecked = isSelected,
-          isStared = isBookmarked,
           onClick = { onClickOpenMajorContainer(name) },
-          onClickStar = { onClickOpenMajorBookmark(name) },
         )
       }
     }

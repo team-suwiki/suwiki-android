@@ -34,9 +34,7 @@ fun OpenMajorContainer(
   modifier: Modifier = Modifier,
   text: String,
   isChecked: Boolean,
-  isStared: Boolean,
   onClick: () -> Unit = {},
-  onClickStar: () -> Unit = {},
 ) {
   val (textColor, backgroundColor) = if (isChecked) {
     Primary to Blue5
@@ -68,15 +66,12 @@ fun OpenMajorContainer(
 @Composable
 fun OpenMajorContainerPreview() {
   var isChecked by remember { mutableStateOf(false) }
-  var isStared by remember { mutableStateOf(false) }
 
   SuwikiTheme {
     OpenMajorContainer(
       text = "개설학과명",
       isChecked = isChecked,
-      isStared = isStared,
       onClick = { isChecked = !isChecked },
-      onClickStar = { isStared = !isStared },
     )
   }
 }

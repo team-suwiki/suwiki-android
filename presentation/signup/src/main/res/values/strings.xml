@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="signup_screen_title_id">아이디를 입력하세요</string>
-  <string name="signup_screen_title_password">비밀번호를 입력하세요</string>
-  <string name="signup_screen_title_password_confirm">비밀번호를 확인하세요</string>
-  <string name="signup_screen_title_email">학교 이메일을 입력하세요</string>
-  <string name="signup_screen_receive_auth_email">인증메일 받기</string>
-  <string name="signup_screen_id_overlap">아이디 중복확인</string>
-</resources>
