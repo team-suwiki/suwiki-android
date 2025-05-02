@@ -11,8 +11,4 @@ enum class OpenMajorTap(
     position = 0,
     titleId = R.string.word_all,
   ),
-  BOOKMARK(
-    position = 1,
-    titleId = R.string.word_bookmark,
-  ),
 }

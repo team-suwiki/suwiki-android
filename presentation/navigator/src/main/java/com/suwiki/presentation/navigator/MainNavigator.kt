@@ -40,96 +40,7 @@ import com.suwiki.presentation.timetable.navigation.navigateTimetableList
 internal class MainNavigator(
   val navController: NavHostController,
 ) {
-  private val currentDestination: NavDestination?
-    @Composable get() = navController
-      .currentBackStackEntryAsState().value?.destination
-
-  val startDestination = MainTab.TIMETABLE.route
-
-  val currentTab: MainTab?
-    @Composable get() = currentDestination
-      ?.route
-      ?.let(MainTab::find)
-
-  fun navigate(tab: MainTab) {
-    val navOptions = navOptions {
-      popUpTo(navController.graph.findStartDestination().id) {
-        saveState = true
-      }
-      launchSingleTop = true
-      restoreState = true
-    }
-
-    when (tab) {
-      MainTab.TIMETABLE -> navController.navigateTimetable(navOptions)
-      MainTab.LECTURE_EVALUATION -> navController.navigateLectureEvaluation(navOptions)
-      MainTab.MY_INFO -> navController.navigateMyInfo(navOptions)
-    }
-  }
-
-  fun navigateLogin(navOptions: NavOptions? = null) {
-    navController.navigateLogin(navOptions)
-  }
-
-  fun navigateFindId() {
-    navController.navigateFindId()
-  }
-
-  fun navigateFindPassword() {
-    navController.navigateFindPassword()
-  }
-
-  fun navigateSignup() {
-    navController.navigateSignup()
-  }
-
-  fun navigateSignupComplete() {
-    navController.navigateSignupComplete()
-  }
-
-  fun navigateLectureEvaluationDetail(id: String) {
-    navController.navigateLectureEvaluationDetail(id)
-  }
-
-  fun navigateMyAccount() {
-    navController.navigateMyAccount()
-  }
-
-  fun navigateResetPassword() {
-    navController.navigateResetPassword()
-  }
-
-  fun navigateQuit() {
-    navController.navigateQuit()
-  }
-
-  fun navigateMyPoint() {
-    navController.navigateMyPoint()
-  }
-
-  fun navigateBanHistory() {
-    navController.navigateBanHistory()
-  }
-
-  fun navigateNotice() {
-    navController.navigateNotice()
-  }
-
-  fun navigateNoticeDetail(noticeId: Long) {
-    navController.navigateNoticeDetail(noticeId)
-  }
-
-  fun navigateMyEvaluation() {
-    navController.navigateMyEvaluation()
-  }
-
-  fun navigateLectureEvaluationEditor(lectureEvaluation: String) {
-    navController.navigateLectureEvaluationEditor(lectureEvaluation)
-  }
-
-  fun navigateExamEvaluationEditor(examEvaluation: String) {
-    navController.navigateExamEvaluationEditor(examEvaluation)
-  }
+  val startDestination = TimetableRoute.route
 
   fun navigateOpenMajor(selectedOpenMajor: String) {
     navController.navigateOpenMajor(selectedOpenMajor)
@@ -160,11 +71,6 @@ internal class MainNavigator(
   private fun isSameCurrentDestination(route: String) =
     navController.currentDestination?.route == route
 
-  @Composable
-  fun shouldShowBottomBar(): Boolean {
-    val currentRoute = currentDestination?.route ?: return false
-    return currentRoute in MainTab
-  }
 }
 
 @Composable

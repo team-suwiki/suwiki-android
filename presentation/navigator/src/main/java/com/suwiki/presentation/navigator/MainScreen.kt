@@ -80,26 +80,6 @@ internal fun MainScreen(
         navController = navigator.navController,
         startDestination = navigator.startDestination,
       ) {
-        loginNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateFindId = navigator::navigateFindId,
-          navigateFindPassword = navigator::navigateFindPassword,
-          navigateSignup = navigator::navigateSignup,
-          handleException = viewModel::handleException,
-        )
-
-        signupNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          handleException = viewModel::handleException,
-          navigateSignupComplete = navigator::navigateSignupComplete,
-          navigateLogin = {
-            navigator.navigateLogin(
-              navOptions {
-                popUpTo(navigator.startDestination)
-              },
-            )
-          },
-        )
 
         openMajorNavGraph(
           popBackStack = navigator::popBackStackIfNotHome,
@@ -125,56 +105,6 @@ internal fun MainScreen(
           onShowToast = viewModel::onShowToast,
           navigateOpenMajor = navigator::navigateOpenMajor,
           navigateCellEditor = navigator::navigateCellEditor,
-        )
-
-        lectureEvaluationNavGraph(
-          padding = innerPadding,
-          argumentName = OpenMajorRoute.ARGUMENT_NAME,
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateLogin = navigator::navigateLogin,
-          navigateSignUp = navigator::navigateSignup,
-          navigateLectureEvaluationEditor = navigator::navigateLectureEvaluationEditor,
-          navigateExamEvaluationEditor = navigator::navigateExamEvaluationEditor,
-          handleException = viewModel::handleException,
-          navigateOpenMajor = navigator::navigateOpenMajor,
-          onShowToast = viewModel::onShowToast,
-          navigateLectureEvaluationDetail = navigator::navigateLectureEvaluationDetail,
-        )
-
-        myEvaluationNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateLectureEvaluationEditor = navigator::navigateLectureEvaluationEditor,
-          navigateExamEvaluationEditor = navigator::navigateExamEvaluationEditor,
-          handleException = viewModel::handleException,
-        )
-
-        myEvaluationEditNavGraph(
-          popBackStack = navigator::popBackStackIfNotHome,
-          onShowToast = viewModel::onShowToast,
-          handleException = viewModel::handleException,
-        )
-
-        myInfoNavGraph(
-          padding = innerPadding,
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateNotice = navigator::navigateNotice,
-          navigateMyEvaluation = navigator::navigateMyEvaluation,
-          navigateMyAccount = navigator::navigateMyAccount,
-          navigateResetPassword = navigator::navigateResetPassword,
-          navigateQuit = navigator::navigateQuit,
-          navigateFindPassword = navigator::navigateFindPassword,
-          navigateLogin = navigator::navigateLogin,
-          navigateMyPoint = navigator::navigateMyPoint,
-          navigateBanHistory = navigator::navigateBanHistory,
-          handleException = viewModel::handleException,
-          onShowToast = viewModel::onShowToast,
-        )
-
-        noticeNavGraph(
-          padding = innerPadding,
-          popBackStack = navigator::popBackStackIfNotHome,
-          navigateNoticeDetail = navigator::navigateNoticeDetail,
-          handleException = viewModel::handleException,
         )
       }
 
@@ -203,76 +133,5 @@ internal fun MainScreen(
         message = uiState.toastMessage,
       )
     },
-    bottomBar = {
-      MainBottomBar(
-        visible = navigator.shouldShowBottomBar(),
-        tabs = MainTab.entries.toImmutableList(),
-        currentTab = navigator.currentTab,
-        onTabSelected = navigator::navigate,
-      )
-    },
   )
-}
-
-@Composable
-private fun MainBottomBar(
-  visible: Boolean,
-  tabs: ImmutableList<MainTab>,
-  currentTab: MainTab?,
-  onTabSelected: (MainTab) -> Unit,
-) {
-  AnimatedVisibility(
-    visible = visible,
-    enter = fadeIn() + slideIn { IntOffset(0, it.height) },
-    exit = fadeOut() + slideOut { IntOffset(0, it.height) },
-  ) {
-    Row(
-      modifier = Modifier
-        .fillMaxWidth()
-        .height(56.dp)
-        .bottomNavigationShadow()
-        .background(
-          color = White,
-          shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp),
-        ),
-      horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-      tabs.forEach { tab ->
-        MainBottomBarItem(
-          tab = tab,
-          selected = tab == currentTab,
-          onClick = { onTabSelected(tab) },
-        )
-      }
-    }
-  }
-}
-
-@Composable
-private fun RowScope.MainBottomBarItem(
-  tab: MainTab,
-  selected: Boolean,
-  onClick: () -> Unit,
-) {
-  Box(
-    modifier = Modifier
-      .weight(1f)
-      .fillMaxHeight()
-      .suwikiClickable(
-        rippleEnabled = false,
-        onClick = onClick,
-      ),
-    contentAlignment = Alignment.Center,
-  ) {
-    Icon(
-      painter = painterResource(tab.iconResId),
-      contentDescription = tab.contentDescription,
-      tint = if (selected) {
-        Primary
-      } else {
-        GrayDA
-      },
-      modifier = Modifier.size(24.dp),
-    )
-  }
 }
