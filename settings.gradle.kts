@@ -10,7 +10,6 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
   repositories {
     google()
     mavenCentral()
@@ -67,3 +66,4 @@ include(":remote:common")
 include(":domain:common")
 include(":presentation:common:ui")
 include(":presentation:common:designsystem")
+include(":shared")
