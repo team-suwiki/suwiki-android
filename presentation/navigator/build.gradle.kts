@@ -8,7 +8,6 @@ android {
 }
 
 dependencies {
-  implementation(projects.domain.notice)
 
   implementation(projects.presentation.openmajor)
   implementation(projects.presentation.timetable)

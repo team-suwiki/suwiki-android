@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.suwiki.common.android.recordException
 import com.suwiki.common.model.exception.NetworkException
 import com.suwiki.common.model.exception.UnknownException
-import com.suwiki.domain.notice.usecase.CheckUpdateMandatoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex

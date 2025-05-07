@@ -35,12 +35,7 @@ include(":data:openmajor")
 include(":data:timetable")
 
 include(":domain:openmajor")
-include(":domain:user")
-include(":domain:signup")
-include(":domain:lectureevaluation")
 include(":domain:timetable")
-include(":domain:notice")
-include(":domain:login")
 
 include(":presentation:navigator")
 include(":presentation:openmajor")
