@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let Typography = SuwikiTypography(
+let defaultTypography = SuwikiTypography(
     header1: TextStyle(font: .notoSans(.bold, size: 22), lineSpacing: 1.5, color: .black),
     header2: TextStyle(font: .notoSans(.bold, size: 18), lineSpacing: 1.5, color: .black),
     header3: TextStyle(font: .notoSans(.medium, size: 18), lineSpacing: 1.5, color: .black),
