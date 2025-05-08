@@ -25,24 +25,12 @@ dependencies {
 
   implementation(projects.remote.openmajor)
   implementation(projects.remote.timetable)
-  implementation(projects.remote.lectureevaluation)
-  implementation(projects.remote.signup)
-  implementation(projects.remote.notice)
-  implementation(projects.remote.user)
-  implementation(projects.remote.login)
 
   implementation(projects.local.openmajor)
   implementation(projects.local.timetable)
-  implementation(projects.local.user)
-  implementation(projects.local.login)
 
   implementation(projects.data.openmajor)
   implementation(projects.data.timetable)
-  implementation(projects.data.lectureevaluation)
-  implementation(projects.data.user)
-  implementation(projects.data.notice)
-  implementation(projects.data.signup)
-  implementation(projects.data.login)
 
   implementation(platform(libs.firebase.bom))
   implementation(libs.firebase.crashlytics)

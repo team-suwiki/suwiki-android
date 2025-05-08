@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.suwiki.common.android.recordException
 import com.suwiki.common.model.exception.NetworkException
 import com.suwiki.common.model.exception.UnknownException
-import com.suwiki.domain.notice.usecase.CheckUpdateMandatoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
@@ -19,9 +18,7 @@ import java.net.ConnectException
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-  private val checkUpdateMandatoryUseCase: CheckUpdateMandatoryUseCase,
-) : ContainerHost<MainState, MainSideEffect>, ViewModel() {
+class MainViewModel @Inject constructor() : ContainerHost<MainState, MainSideEffect>, ViewModel() {
   override val container: Container<MainState, MainSideEffect> = container(MainState())
 
   private val mutex = Mutex()
@@ -29,10 +26,8 @@ class MainViewModel @Inject constructor(
 
   fun checkUpdateMandatory(versionCode: Long) = intent {
     if (isFirstVisit.not()) return@intent
-    checkUpdateMandatoryUseCase(versionCode)
-      .onSuccess { updateMandatory ->
-        reduce { state.copy(showUpdateMandatoryDialog = updateMandatory) }
-      }
+    // 앱 버전 확인 하는 동작 수행
+    // 최신 아닌 경우 업데이트 팝업 띄우는 상태 업데이트
     isFirstVisit = true
   }
 

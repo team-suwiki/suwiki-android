@@ -34,9 +34,7 @@ fun OpenMajorContainer(
   modifier: Modifier = Modifier,
   text: String,
   isChecked: Boolean,
-  isStared: Boolean,
   onClick: () -> Unit = {},
-  onClickStar: () -> Unit = {},
 ) {
   val (textColor, backgroundColor) = if (isChecked) {
     Primary to Blue5
@@ -56,18 +54,6 @@ fun OpenMajorContainer(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Start,
   ) {
-    Icon(
-      painter = painterResource(id = R.drawable.ic_filter_stared),
-      contentDescription = "",
-      modifier = Modifier
-        .size(24.dp)
-        .suwikiClickable(
-          onClick = onClickStar,
-          rippleEnabled = false,
-        ),
-      tint = if (isStared) Primary else GrayDA,
-    )
-    Spacer(modifier = Modifier.width(4.dp))
     Text(
       text = text,
       style = SuwikiTheme.typography.body2,
@@ -80,15 +66,12 @@ fun OpenMajorContainer(
 @Composable
 fun OpenMajorContainerPreview() {
   var isChecked by remember { mutableStateOf(false) }
-  var isStared by remember { mutableStateOf(false) }
 
   SuwikiTheme {
     OpenMajorContainer(
       text = "개설학과명",
       isChecked = isChecked,
-      isStared = isStared,
       onClick = { isChecked = !isChecked },
-      onClickStar = { isStared = !isStared },
     )
   }
 }
