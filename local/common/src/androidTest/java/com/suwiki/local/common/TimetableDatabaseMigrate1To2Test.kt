@@ -3,7 +3,7 @@ package com.suwiki.local.common
 import androidx.room.testing.MigrationTestHelper
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.suwiki.local.common.database.TimetableDatabase
+import com.suwiki.local.common.database.database.TimetableDatabase
 import com.suwiki.local.common.database.di.DatabaseName
 import com.suwiki.local.common.database.migration.TIMETABLE_MIGRATION_1_2
 import org.junit.Rule
