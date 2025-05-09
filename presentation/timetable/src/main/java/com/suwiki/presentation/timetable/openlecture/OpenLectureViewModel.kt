@@ -7,12 +7,16 @@ import com.suwiki.common.model.timetable.OpenLectureData
 import com.suwiki.common.model.timetable.TimetableCell
 import com.suwiki.common.model.timetable.TimetableCellColor
 import com.suwiki.common.model.timetable.TimetableDay
+import com.suwiki.domain.timetable.repository.OpenLectureRepository
 import com.suwiki.domain.timetable.usecase.GetOpenLectureListUseCase
 import com.suwiki.domain.timetable.usecase.InsertTimetableCellUseCase
+import com.suwiki.domain.timetable.usecase.UpdateOpenLectureIfNeedUseCase
 import com.suwiki.presentation.timetable.navigation.argument.toCellEditorArgument
 import com.suwiki.presentation.timetable.openlecture.model.SchoolLevel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toPersistentList
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import org.orbitmvi.orbit.Container
@@ -28,8 +32,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OpenLectureViewModel @Inject constructor(
+  private val updateOpenLectureIfNeedUseCase: UpdateOpenLectureIfNeedUseCase,
   private val getOpenLectureListUseCase: GetOpenLectureListUseCase,
   private val insertTimetableCellUseCase: InsertTimetableCellUseCase,
+  private val openLectureRepository: OpenLectureRepository,
 ) : ViewModel(), ContainerHost<OpenLectureState, OpenLectureSideEffect> {
 
   private val mutex: Mutex = Mutex()
@@ -41,12 +47,25 @@ class OpenLectureViewModel @Inject constructor(
   private val currentState
     get() = container.stateFlow.value
 
-  private var cursorId: Long = 0
-  private var isLast: Boolean = false
   private var searchQuery: String = ""
   private var isFirstVisit: Boolean = true
 
   private var selectedOpenLecture: OpenLecture? = null
+
+  fun initData() = intent {
+    if (isFirstVisit) {
+      reduce { state.copy(isLoading = true) }
+      updateOpenLectureIfNeedUseCase()
+      val lastUpdated = openLectureRepository.getLastUpdatedDate()
+      reduce {
+        state.copy(
+          lastUpdatedDate = lastUpdated,
+        )
+      }
+      getOpenLectureList()
+      isFirstVisit = false
+    }
+  }
 
   fun navigateCellEditor(openLecture: OpenLecture = OpenLecture()) = intent {
     postSideEffect(
@@ -112,16 +131,9 @@ class OpenLectureViewModel @Inject constructor(
 
   fun hideSelectColorBottomSheet() = intent { reduce { state.copy(showSelectCellColorBottomSheet = false) } }
 
-  fun initData() = intent {
-    if (isFirstVisit) {
-      getOpenLectureList(needClear = false)
-      isFirstVisit = false
-    }
-  }
-
   fun searchOpenLecture(search: String) {
     searchQuery = search
-    getOpenLectureList(search = search, needClear = true)
+    getOpenLectureList(search = search)
   }
 
   @OptIn(OrbitExperimental::class)
@@ -136,9 +148,7 @@ class OpenLectureViewModel @Inject constructor(
       )
     }
 
-    getOpenLectureList(
-      needClear = true,
-    )
+    getOpenLectureList()
   }
 
   fun updateSelectedOpenMajor(openMajor: String) = intent {
@@ -149,64 +159,33 @@ class OpenLectureViewModel @Inject constructor(
         selectedOpenMajor = openMajor,
       )
     }
-
-    getOpenLectureList(
-      needClear = true,
-    )
+    getOpenLectureList()
   }
 
-  fun getOpenLectureList(
+  private fun getOpenLectureList(
     search: String = searchQuery,
-    needClear: Boolean,
-  ) = intent {
+    ) = intent {
     mutex.withLock {
-      val currentList = when {
-        needClear -> {
-          reduce { state.copy(isLoading = true) }
-          cursorId = 0
-          isLast = false
-          emptyList()
-        }
-
-        isLast -> return@intent
-        else -> state.openLectureList
-      }
-
-      getOpenLectureListUseCase(
+      val newData = getOpenLectureListUseCase(
         GetOpenLectureListUseCase.Param(
-          cursorId = cursorId,
-          keyword = search,
+          lectureOrProfessorName = search,
           major = if (currentState.selectedOpenMajor == "전체") null else currentState.selectedOpenMajor,
           grade = currentState.schoolLevel.query,
         ),
-      ).onSuccess { newData ->
-        handleGetOpenLectureListSuccess(
-          currentList = currentList,
-          newData = newData,
-        )
-      }.onFailure {
+      ).catch {
         postSideEffect(OpenLectureSideEffect.HandleException(it))
-      }
+      }.firstOrNull() ?: return@withLock
 
-      if (needClear) {
-        postSideEffect(OpenLectureSideEffect.ScrollToTop)
-        reduce { state.copy(isLoading = false) }
+      reduce {
+        state.copy(
+          isLoading = false,
+          openLectureList = newData
+            .distinctBy { it.id }
+            .toPersistentList(),
+        )
       }
+      postSideEffect(OpenLectureSideEffect.ScrollToTop)
     }
-  }
-
-  private suspend fun SimpleSyntax<OpenLectureState, OpenLectureSideEffect>.handleGetOpenLectureListSuccess(
-    currentList: List<OpenLecture>,
-    newData: OpenLectureData,
-  ) = reduce {
-    isLast = newData.isLast
-    cursorId = newData.content.lastOrNull()?.id ?: 0L
-    state.copy(
-      openLectureList = currentList
-        .plus(newData.content)
-        .distinctBy { it.id }
-        .toPersistentList(),
-    )
   }
 
   fun showGradeBottomSheet() = intent { reduce { state.copy(showSchoolLevelBottomSheet = true) } }

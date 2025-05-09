@@ -1,4 +1,4 @@
-package com.suwiki.local.common.database
+package com.suwiki.local.common.database.database
 
 import androidx.room.AutoMigration
 import androidx.room.Database

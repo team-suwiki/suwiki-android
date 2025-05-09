@@ -9,4 +9,5 @@ android {
 
 dependencies {
   implementation(projects.domain.timetable)
+  testImplementation(libs.junit4)
 }

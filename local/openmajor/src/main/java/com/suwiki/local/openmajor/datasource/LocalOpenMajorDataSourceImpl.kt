@@ -8,7 +8,7 @@ import com.suwiki.common.android.Dispatcher
 import com.suwiki.common.android.SuwikiDispatchers
 import com.suwiki.common.model.openmajor.OpenMajor
 import com.suwiki.data.openmajor.datasource.LocalOpenMajorDataSource
-import com.suwiki.local.common.database.OpenMajorDatabase
+import com.suwiki.local.common.database.database.OpenMajorDatabase
 import com.suwiki.local.common.datastore.di.NormalDataStore
 import com.suwiki.local.openmajor.converter.toEntity
 import com.suwiki.local.openmajor.converter.toModel
