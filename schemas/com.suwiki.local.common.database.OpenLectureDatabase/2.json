@@ -1,11 +1,11 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "fdfd5ad0cd87be70a7007f51d26b3ff7",
+    "version": 2,
+    "identityHash": "d388602654d094c34e2c718a802d0243",
     "entities": [
       {
-        "tableName": "TimetableEntity",
+        "tableName": "OpenLectureEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`number` INTEGER NOT NULL, `major` TEXT NOT NULL, `grade` TEXT NOT NULL, `classNumber` TEXT NOT NULL, `classDivideNumber` TEXT NOT NULL, `className` TEXT NOT NULL, `classification` TEXT NOT NULL, `professor` TEXT NOT NULL, `time` TEXT NOT NULL, `credit` TEXT NOT NULL, PRIMARY KEY(`number`))",
         "fields": [
           {
@@ -82,7 +82,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fdfd5ad0cd87be70a7007f51d26b3ff7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd388602654d094c34e2c718a802d0243')"
     ]
   }
 }

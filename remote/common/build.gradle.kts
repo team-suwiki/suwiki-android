@@ -10,7 +10,7 @@ android {
 
   buildTypes {
     getByName("debug") {
-      buildConfigField("String", "BASE_URL", "String.valueOf(\"http://54.180.72.97:8080\")")
+      buildConfigField("String", "BASE_URL", "\"https://api.suwiki.kr\"")
     }
 
     getByName("release") {
@@ -29,6 +29,10 @@ dependencies {
   implementation(libs.retrofit.kotlin.serialization)
   implementation(libs.okhttp.logging)
   androidTestImplementation(libs.junit4)
+
+  val bom = libs.firebase.bom
+  add("implementation", platform(bom))
+  implementation(libs.bundles.firebase)
 
   implementation(libs.timber)
 }

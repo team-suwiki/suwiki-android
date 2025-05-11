@@ -9,7 +9,7 @@ import com.suwiki.common.android.Dispatcher
 import com.suwiki.common.android.SuwikiDispatchers
 import com.suwiki.common.model.timetable.Timetable
 import com.suwiki.data.timetable.datasource.LocalTimetableDataSource
-import com.suwiki.local.common.database.TimetableDatabase
+import com.suwiki.local.common.database.database.TimetableDatabase
 import com.suwiki.local.common.datastore.di.NormalDataStore
 import com.suwiki.local.timetable.converter.toEntity
 import com.suwiki.local.timetable.converter.toModel

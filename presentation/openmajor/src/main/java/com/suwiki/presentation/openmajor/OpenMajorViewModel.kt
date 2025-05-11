@@ -8,6 +8,7 @@ import com.suwiki.domain.openmajor.usecase.GetBookmarkedOpenMajorListUseCase
 import com.suwiki.domain.openmajor.usecase.GetOpenMajorListUseCase
 import com.suwiki.domain.openmajor.usecase.RegisterBookmarkUseCase
 import com.suwiki.domain.openmajor.usecase.UnRegisterBookmarkUseCase
+import com.suwiki.domain.timetable.repository.OpenLectureRepository
 import com.suwiki.presentation.openmajor.model.OpenMajorTap
 import com.suwiki.presentation.openmajor.model.toBookmarkedOpenMajorList
 import com.suwiki.presentation.openmajor.model.toOpenMajorList
@@ -33,6 +34,7 @@ class OpenMajorViewModel @Inject constructor(
   private val getBookmarkedOpenMajorListUseCase: GetBookmarkedOpenMajorListUseCase,
   private val registerBookmarkUseCase: RegisterBookmarkUseCase,
   private val unRegisterBookmarkUseCase: UnRegisterBookmarkUseCase,
+  private val openLectureRepository: OpenLectureRepository,
   savedStateHandle: SavedStateHandle,
 ) : ContainerHost<OpenMajorState, OpenMajorSideEffect>, ViewModel() {
   override val container: Container<OpenMajorState, OpenMajorSideEffect> = container(OpenMajorState())
@@ -113,7 +115,8 @@ class OpenMajorViewModel @Inject constructor(
   private fun getOpenMajor() = intent {
     getOpenMajorListUseCase().onEach {
       allOpenMajorList.clear()
-      allOpenMajorList.addAll(it)
+      val firebaseOpenMajor = openLectureRepository.getOpenMajor()
+      allOpenMajorList.addAll((it + firebaseOpenMajor).distinct())
       reduceOpenMajorList()
     }.catch {
     }.launchIn(viewModelScope)
