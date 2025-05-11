@@ -14,6 +14,9 @@ dependencies {
   implementation(libs.retrofit.core)
   implementation(libs.kotlinx.serialization.json)
 
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
+
   val bom = libs.firebase.bom
   add("implementation", platform(bom))
   implementation(libs.bundles.firebase)

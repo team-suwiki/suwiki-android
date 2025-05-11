@@ -25,8 +25,7 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-@HiltViewModel
-class CellEditorViewModel @Inject constructor(
+class CellEditorViewModel(
   private val insertTimetableCellUseCase: InsertTimetableCellUseCase,
   private val updateTimetableCellUseCase: UpdateTimetableCellUseCase,
   savedStateHandle: SavedStateHandle,

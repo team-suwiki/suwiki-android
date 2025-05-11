@@ -14,4 +14,7 @@ dependencies {
   implementation(libs.retrofit.core)
   implementation(libs.kotlinx.serialization.json)
   implementation(libs.kotlinx.datetime)
+
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
 }

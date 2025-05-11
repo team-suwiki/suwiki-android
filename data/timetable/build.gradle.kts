@@ -10,4 +10,7 @@ android {
 dependencies {
   implementation(projects.domain.timetable)
   testImplementation(libs.junit4)
+
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
 }

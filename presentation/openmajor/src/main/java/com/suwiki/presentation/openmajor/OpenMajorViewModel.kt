@@ -28,8 +28,7 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-@HiltViewModel
-class OpenMajorViewModel @Inject constructor(
+class OpenMajorViewModel(
   private val getOpenMajorListUseCase: GetOpenMajorListUseCase,
   private val getBookmarkedOpenMajorListUseCase: GetBookmarkedOpenMajorListUseCase,
   private val registerBookmarkUseCase: RegisterBookmarkUseCase,

@@ -68,12 +68,13 @@ import kotlinx.coroutines.launch
 import me.onebone.toolbar.CollapsingToolbarScaffold
 import me.onebone.toolbar.ScrollStrategy
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun OpenLectureRoute(
-  viewModel: OpenLectureViewModel = hiltViewModel(),
+  viewModel: OpenLectureViewModel = koinViewModel(),
   selectedOpenMajor: String,
   popBackStack: () -> Unit,
   handleException: (Throwable) -> Unit,

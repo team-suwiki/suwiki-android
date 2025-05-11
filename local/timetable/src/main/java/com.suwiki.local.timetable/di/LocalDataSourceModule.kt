@@ -2,27 +2,22 @@ package com.suwiki.local.timetable.di
 
 import com.suwiki.data.timetable.datasource.LocalOpenLectureDataSource
 import com.suwiki.data.timetable.datasource.LocalTimetableDataSource
+import com.suwiki.data.timetable.di.timetableRepositoryModule
+import com.suwiki.local.common.database.di.databaseModule
+import com.suwiki.local.common.datastore.di.dataStoreModule
 import com.suwiki.local.timetable.datasource.LocalOpenLectureDatasourceImpl
 import com.suwiki.local.timetable.datasource.LocalTimetableDatasourceImpl
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.core.qualifier.named
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class LocalDataSourceModule {
+val localTimetableDataSourceModule = module {
+  includes(dataStoreModule, databaseModule, timetableRepositoryModule)
+  single {
+    LocalTimetableDatasourceImpl(get(named("normalDataStore")), get())
+  } bind LocalTimetableDataSource::class
 
-  @Singleton
-  @Binds
-  abstract fun bindLocalTimetableDataSource(
-    localTimetableDatasourceImpl: LocalTimetableDatasourceImpl,
-  ): LocalTimetableDataSource
-
-  @Singleton
-  @Binds
-  abstract fun bindLocalOpenLectureDataSource(
-    localOpenLectureDatasourceImpl: LocalOpenLectureDatasourceImpl,
-  ): LocalOpenLectureDataSource
+  single {
+    LocalOpenLectureDatasourceImpl(get(named("normalDataStore")), get())
+  } bind LocalOpenLectureDataSource::class
 }

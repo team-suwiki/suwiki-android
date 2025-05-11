@@ -9,6 +9,6 @@ android {
 
 dependencies {
 
-  implementation(projects.presentation.openmajor)
-  implementation(projects.presentation.timetable)
+  api(projects.presentation.openmajor)
+  api(projects.presentation.timetable)
 }

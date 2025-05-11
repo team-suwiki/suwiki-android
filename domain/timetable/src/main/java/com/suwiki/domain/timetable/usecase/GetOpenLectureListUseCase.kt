@@ -5,7 +5,7 @@ import com.suwiki.domain.common.runCatchingIgnoreCancelled
 import com.suwiki.domain.timetable.repository.OpenLectureRepository
 import javax.inject.Inject
 
-class GetOpenLectureListUseCase @Inject constructor(
+class GetOpenLectureListUseCase(
   private val openLectureRepository: OpenLectureRepository,
 ) {
   operator fun invoke(param: Param) =

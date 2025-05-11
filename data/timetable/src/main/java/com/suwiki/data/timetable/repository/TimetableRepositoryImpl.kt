@@ -10,7 +10,7 @@ import com.suwiki.domain.timetable.repository.TimetableRepository
 import kotlinx.coroutines.flow.firstOrNull
 import javax.inject.Inject
 
-class TimetableRepositoryImpl @Inject constructor(
+class TimetableRepositoryImpl (
   private val localTimetableDataSource: LocalTimetableDataSource,
 ) : TimetableRepository {
   override suspend fun getAllTimetable(): List<Timetable> {

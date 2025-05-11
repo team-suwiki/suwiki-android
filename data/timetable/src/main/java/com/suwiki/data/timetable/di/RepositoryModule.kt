@@ -9,20 +9,11 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
-
-  @Singleton
-  @Binds
-  abstract fun bindOpenLectureRepository(
-    openLectureRepositoryImpl: OpenLectureRepositoryImpl,
-  ): OpenLectureRepository
-
-  @Singleton
-  @Binds
-  abstract fun bindTimetableRepository(
-    timetableRepositoryImpl: TimetableRepositoryImpl,
-  ): TimetableRepository
+val timetableRepositoryModule = module {
+  singleOf(::OpenLectureRepositoryImpl) { bind<OpenLectureRepository>() }
+  singleOf(::TimetableRepositoryImpl) { bind<TimetableRepository>() }
 }

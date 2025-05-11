@@ -36,5 +36,8 @@ dependencies {
   implementation(libs.firebase.crashlytics)
   implementation(libs.firebase.analytics)
 
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
+
   implementation(libs.timber)
 }

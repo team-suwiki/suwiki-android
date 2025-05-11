@@ -13,16 +13,17 @@ import com.suwiki.local.common.datastore.di.NormalDataStore
 import com.suwiki.local.timetable.converter.toEntity
 import com.suwiki.local.timetable.converter.toModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class LocalOpenLectureDatasourceImpl @Inject constructor(
-  @NormalDataStore private val dataStore: DataStore<Preferences>,
-  @Dispatcher(SuwikiDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
+class LocalOpenLectureDatasourceImpl(
+  private val dataStore: DataStore<Preferences>,
   private val openLectureDatabase: OpenLectureDatabase,
 ) : LocalOpenLectureDataSource {
+  private val ioDispatcher = Dispatchers.IO
 
   companion object {
     private val OPEN_LECTURE_LIST_VERSION = longPreferencesKey("[KEY] is open lecture list version")

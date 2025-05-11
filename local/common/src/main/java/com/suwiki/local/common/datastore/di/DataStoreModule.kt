@@ -11,38 +11,25 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.suwiki.local.common.UserPreference
 import com.suwiki.local.common.datastore.proto.UserPreferenceSerializer
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DataStoreModule {
-
-  @Provides
-  @Singleton
-  fun providesUserPreferencesDataStore(
-    @ApplicationContext context: Context,
-    userPreferenceSerializer: UserPreferenceSerializer,
-  ): DataStore<UserPreference> =
+val dataStoreModule = module {
+  single {
     DataStoreFactory.create(
-      serializer = userPreferenceSerializer,
+      serializer = get<UserPreferenceSerializer>(),
     ) {
-      context.dataStoreFile("user_preference.pb")
+      androidContext().dataStoreFile("user_preference.pb")
     }
+  }
 
-  @Singleton
-  @Provides
-  @NormalDataStore
-  fun provideDataStore(
-    @ApplicationContext applicationContext: Context,
-  ): DataStore<Preferences> = PreferenceDataStoreFactory.create(
-    corruptionHandler = ReplaceFileCorruptionHandler(
-      produceNewData = { emptyPreferences() },
-    ),
-    produceFile = { applicationContext.preferencesDataStoreFile("suwiki-preference") },
-  )
+  single(qualifier = named("normalDataStore")) {
+    PreferenceDataStoreFactory.create(
+      corruptionHandler = ReplaceFileCorruptionHandler(
+        produceNewData = { emptyPreferences() },
+      ),
+      produceFile = { androidContext().preferencesDataStoreFile("suwiki-preference") },
+    )
+  }
 }
