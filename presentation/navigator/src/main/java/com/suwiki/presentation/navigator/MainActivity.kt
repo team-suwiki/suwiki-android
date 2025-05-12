@@ -16,7 +16,6 @@ import androidx.core.view.WindowCompat
 import com.suwiki.presentation.common.designsystem.theme.SuwikiTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {

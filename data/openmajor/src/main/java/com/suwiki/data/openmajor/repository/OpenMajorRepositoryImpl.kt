@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class OpenMajorRepositoryImpl @Inject constructor(
+class OpenMajorRepositoryImpl(
   private val localOpenMajorDataSource: LocalOpenMajorDataSource,
   private val remoteOpenMajorDataSource: RemoteOpenMajorDataSource,
 ) : OpenMajorRepository {

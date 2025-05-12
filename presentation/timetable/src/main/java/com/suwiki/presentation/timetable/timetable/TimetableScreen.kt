@@ -27,15 +27,15 @@ import com.suwiki.presentation.timetable.timetable.component.TimetableAppbar
 import com.suwiki.presentation.timetable.timetable.component.TimetableEmptyColumn
 import com.suwiki.presentation.timetable.timetable.component.timetable.Timetable
 import com.suwiki.presentation.timetable.timetable.component.timetable.cell.TimetableCellType
-import com.suwiki.presentation.timetable.widget.sendWidgetUpdateCommand
 import kotlinx.collections.immutable.toPersistentList
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun TimetableRoute(
   padding: PaddingValues,
-  viewModel: TimetableViewModel = hiltViewModel(),
+  viewModel: TimetableViewModel = koinViewModel(),
   navigateTimetableEditor: () -> Unit,
   navigateOpenLecture: () -> Unit,
   navigateTimetableList: () -> Unit,
@@ -58,10 +58,6 @@ fun TimetableRoute(
 
   LaunchedEffect(key1 = Unit) {
     viewModel.getMainTimetable()
-  }
-
-  LaunchedEffect(key1 = uiState.timetable) {
-    sendWidgetUpdateCommand(context)
   }
 
   TimetableScreen(

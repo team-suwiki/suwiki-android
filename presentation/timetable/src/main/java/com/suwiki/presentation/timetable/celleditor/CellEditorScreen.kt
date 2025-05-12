@@ -50,12 +50,13 @@ import com.suwiki.presentation.common.ui.extension.suwikiClickable
 import com.suwiki.presentation.common.ui.util.timetableCellColorHexMap
 import com.suwiki.presentation.timetable.R
 import com.suwiki.presentation.timetable.timetable.component.timetable.toText
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun CellEditorRoute(
-  viewModel: CellEditorViewModel = hiltViewModel(),
+  viewModel: CellEditorViewModel = koinViewModel(),
   popBackStack: () -> Unit,
   handleException: (Throwable) -> Unit,
   onShowToast: (String) -> Unit,

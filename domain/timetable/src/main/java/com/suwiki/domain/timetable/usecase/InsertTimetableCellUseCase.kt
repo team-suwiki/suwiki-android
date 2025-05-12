@@ -5,7 +5,7 @@ import com.suwiki.domain.common.runCatchingIgnoreCancelled
 import com.suwiki.domain.timetable.repository.TimetableRepository
 import javax.inject.Inject
 
-class InsertTimetableCellUseCase @Inject constructor(
+class InsertTimetableCellUseCase(
   private val timetableRepository: TimetableRepository,
 ) {
   suspend operator fun invoke(cellList: List<TimetableCell>): Result<Unit> = runCatchingIgnoreCancelled {

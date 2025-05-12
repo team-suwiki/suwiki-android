@@ -10,17 +10,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DaoModule {
-
-  @Provides
-  fun provideOpenMajorDao(db: OpenMajorDatabase): OpenMajorDao = db.openMajorDao()
-
-  @Provides
-  fun provideTimetableDao(db: TimetableDatabase): TimeTableDao = db.timetableDao()
-
-  @Provides
-  fun provideOpenLectureDao(db: OpenLectureDatabase): OpenLectureDao = db.openLectureDao()
+val daoModule = module {
+  single<OpenMajorDao> { get<OpenMajorDatabase>().openMajorDao() }
+  single<TimeTableDao> { get<TimetableDatabase>().timetableDao() }
+  single<OpenLectureDao> { get<OpenLectureDatabase>().openLectureDao() }
 }

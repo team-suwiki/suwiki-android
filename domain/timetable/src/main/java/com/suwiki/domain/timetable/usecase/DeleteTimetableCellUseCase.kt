@@ -6,7 +6,7 @@ import com.suwiki.domain.common.runCatchingIgnoreCancelled
 import com.suwiki.domain.timetable.repository.TimetableRepository
 import javax.inject.Inject
 
-class DeleteTimetableCellUseCase @Inject constructor(
+class DeleteTimetableCellUseCase(
   private val timetableRepository: TimetableRepository,
 ) {
   suspend operator fun invoke(cell: TimetableCell): Result<Timetable> = runCatchingIgnoreCancelled {

@@ -13,16 +13,18 @@ import com.suwiki.local.common.datastore.di.NormalDataStore
 import com.suwiki.local.openmajor.converter.toEntity
 import com.suwiki.local.openmajor.converter.toModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class LocalOpenMajorDataSourceImpl @Inject constructor(
-  @NormalDataStore private val dataStore: DataStore<Preferences>,
-  @Dispatcher(SuwikiDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
+class LocalOpenMajorDataSourceImpl(
+  private val dataStore: DataStore<Preferences>,
   private val db: OpenMajorDatabase,
 ) : LocalOpenMajorDataSource {
+
+  private val ioDispatcher = Dispatchers.IO
 
   companion object {
     private val OPEN_MAJOR_VERSION = floatPreferencesKey("[KEY] is open major version")

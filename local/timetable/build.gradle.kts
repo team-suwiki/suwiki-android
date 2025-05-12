@@ -27,4 +27,7 @@ dependencies {
 
   testImplementation(libs.junit4)
   androidTestImplementation(libs.junit4)
+
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
 }

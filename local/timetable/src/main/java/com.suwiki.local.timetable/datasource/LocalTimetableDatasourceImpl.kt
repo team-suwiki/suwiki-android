@@ -14,16 +14,17 @@ import com.suwiki.local.common.datastore.di.NormalDataStore
 import com.suwiki.local.timetable.converter.toEntity
 import com.suwiki.local.timetable.converter.toModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class LocalTimetableDatasourceImpl @Inject constructor(
-  @NormalDataStore private val dataStore: DataStore<Preferences>,
-  @Dispatcher(SuwikiDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
+class LocalTimetableDatasourceImpl(
+  private val dataStore: DataStore<Preferences>,
   private val timetableDatabase: TimetableDatabase,
 ) : LocalTimetableDataSource {
+  private val ioDispatcher = Dispatchers.IO
 
   companion object {
     private val MAIN_TIMETABLE_CREATE_TIME = longPreferencesKey("[KEY] is main timetable create time")

@@ -35,4 +35,7 @@ dependencies {
   implementation(libs.bundles.firebase)
 
   implementation(libs.timber)
+
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
 }

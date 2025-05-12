@@ -6,16 +6,13 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-object ApiModule {
-
-  @Singleton
-  @Provides
-  fun provideMajorApi(@AuthRetrofit retrofit: Retrofit): MajorApi {
-    return retrofit.create(MajorApi::class.java)
-  }
+val openMajorModule = module {
+    single<MajorApi> {
+        get<Retrofit>(named("authRetrofit")).create(MajorApi::class.java)
+    }
 }

@@ -30,8 +30,7 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-@HiltViewModel
-class OpenLectureViewModel @Inject constructor(
+class OpenLectureViewModel(
   private val updateOpenLectureIfNeedUseCase: UpdateOpenLectureIfNeedUseCase,
   private val getOpenLectureListUseCase: GetOpenLectureListUseCase,
   private val insertTimetableCellUseCase: InsertTimetableCellUseCase,

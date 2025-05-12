@@ -9,8 +9,12 @@ android {
 }
 
 dependencies {
-  implementation(projects.domain.timetable)
+  api(projects.domain.timetable)
   implementation(libs.kotlinx.serialization.json)
   implementation(libs.bundles.glance)
   implementation(libs.compose.toolbar)
+
+  implementation(libs.koin.compose)
+  implementation(libs.koin.compose.viewmodel)
+  implementation(libs.koin.compose.viewmodel.navigation)
 }

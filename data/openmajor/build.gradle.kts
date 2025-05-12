@@ -9,4 +9,6 @@ android {
 
 dependencies {
   implementation(projects.domain.openmajor)
+  implementation(libs.koin.core)
+  implementation(libs.koin.android)
 }

@@ -5,7 +5,7 @@ import com.suwiki.domain.common.runCatchingIgnoreCancelled
 import com.suwiki.domain.timetable.repository.TimetableRepository
 import javax.inject.Inject
 
-class DeleteTimetableUseCase @Inject constructor(
+class DeleteTimetableUseCase(
   private val timetableRepository: TimetableRepository,
 ) {
   suspend operator fun invoke(timetable: Timetable): Result<Unit> = runCatchingIgnoreCancelled {

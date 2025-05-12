@@ -1,60 +1,40 @@
 package com.suwiki.local.common.database.di
 
-import android.content.Context
 import androidx.room.Room
 import com.suwiki.local.common.database.database.OpenLectureDatabase
 import com.suwiki.local.common.database.database.OpenMajorDatabase
 import com.suwiki.local.common.database.database.TimetableDatabase
 import com.suwiki.local.common.database.migration.TIMETABLE_MIGRATION_1_2
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DatabaseModule {
-
-  @Singleton
-  @Provides
-  fun provideOpenMajorDatabase(
-    @ApplicationContext context: Context,
-  ): OpenMajorDatabase {
-    return Room
-      .databaseBuilder(
-        context,
-        OpenMajorDatabase::class.java,
-        DatabaseName.OPEN_MAJOR,
-      )
+val databaseModule = module {
+  single {
+    Room.databaseBuilder(
+      androidContext(),
+      OpenMajorDatabase::class.java,
+      DatabaseName.OPEN_MAJOR,
+    )
       .fallbackToDestructiveMigration()
       .build()
   }
 
-  @Singleton
-  @Provides
-  fun provideTimetableDatabase(
-    @ApplicationContext context: Context,
-  ): TimetableDatabase {
-    return Room
-      .databaseBuilder(
-        context,
-        TimetableDatabase::class.java,
-        DatabaseName.TIMETABLE,
-      )
+  single {
+    Room.databaseBuilder(
+      androidContext(),
+      TimetableDatabase::class.java,
+      DatabaseName.TIMETABLE,
+    )
       .addMigrations(TIMETABLE_MIGRATION_1_2)
       .fallbackToDestructiveMigration()
       .build()
   }
 
-  @Provides
-  @Singleton
-  fun provideOpenLectureDatabase(@ApplicationContext context: Context): OpenLectureDatabase {
-    return Room.databaseBuilder(
-      context,
+  single {
+    Room.databaseBuilder(
+      androidContext(),
       OpenLectureDatabase::class.java,
-      DatabaseName.OPEN_LECTURE
+      DatabaseName.OPEN_LECTURE,
     ).build()
   }
 }

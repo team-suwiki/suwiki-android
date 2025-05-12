@@ -46,15 +46,15 @@ import com.suwiki.presentation.openmajor.component.OpenMajorContainer
 import com.suwiki.presentation.openmajor.model.OpenMajor
 import com.suwiki.presentation.openmajor.model.OpenMajorTap
 import kotlinx.collections.immutable.PersistentList
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 private val OPEN_MAJOR_PAGE_COUNT = OpenMajorTap.entries.size
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OpenMajorRoute(
-  viewModel: OpenMajorViewModel = hiltViewModel(),
+  viewModel: OpenMajorViewModel = koinViewModel(),
   popBackStack: () -> Unit,
   popBackStackWithArgument: (String) -> Unit,
   handleException: (Throwable) -> Unit,

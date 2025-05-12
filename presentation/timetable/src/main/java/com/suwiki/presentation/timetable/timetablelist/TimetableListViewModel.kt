@@ -17,8 +17,7 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-@HiltViewModel
-class TimetableListViewModel @Inject constructor(
+class TimetableListViewModel(
   private val getAllTimetableUseCase: GetAllTimetableUseCase,
   private val deleteTimetableUseCase: DeleteTimetableUseCase,
   private val setMainTimetableCreateTime: SetMainTimetableCreateTime,

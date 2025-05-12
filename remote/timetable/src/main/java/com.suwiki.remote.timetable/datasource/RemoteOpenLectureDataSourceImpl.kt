@@ -7,7 +7,7 @@ import kotlinx.coroutines.tasks.await
 import okhttp3.internal.toLongOrDefault
 import javax.inject.Inject
 
-class RemoteOpenLectureDataSourceImpl @Inject constructor(
+class RemoteOpenLectureDataSourceImpl(
   private val firebaseDatabase: FirebaseDatabase,
 ) : RemoteOpenLectureDataSource {
 

@@ -25,12 +25,13 @@ import com.suwiki.presentation.common.designsystem.theme.SuwikiTheme
 import com.suwiki.presentation.common.designsystem.theme.White
 import com.suwiki.presentation.timetable.R
 import com.suwiki.presentation.timetable.navigation.argument.TimetableEditorArgument
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun TimetableListRoute(
-  viewModel: TimetableListViewModel = hiltViewModel(),
+  viewModel: TimetableListViewModel = koinViewModel(),
   popBackStack: () -> Unit,
   navigateTimetableEditor: (TimetableEditorArgument) -> Unit,
   handleException: (Throwable) -> Unit,

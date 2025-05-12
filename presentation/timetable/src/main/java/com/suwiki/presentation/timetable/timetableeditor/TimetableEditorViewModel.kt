@@ -19,8 +19,7 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-@HiltViewModel
-class TimetableEditorViewModel @Inject constructor(
+class TimetableEditorViewModel(
   private val insertTimetableUseCase: InsertTimetableUseCase,
   private val updateTimetableUseCase: UpdateTimetableUseCase,
   savedStateHandle: SavedStateHandle,

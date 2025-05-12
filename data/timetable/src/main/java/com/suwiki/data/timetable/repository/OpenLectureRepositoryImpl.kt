@@ -15,14 +15,12 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 import javax.inject.Inject
 
-class OpenLectureRepositoryImpl @Inject constructor(
+class OpenLectureRepositoryImpl(
   private val remoteOpenLectureDataSource: RemoteOpenLectureDataSource,
   private val localOpenLectureDataSource: LocalOpenLectureDataSource,
 ) : OpenLectureRepository {
   override fun getOpenLectureList(
     lectureOrProfessorName: String?,
-
-
     major: String?,
     grade: Int?,
   ): Flow<List<OpenLecture>> {

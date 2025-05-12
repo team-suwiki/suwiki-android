@@ -23,12 +23,13 @@ import com.suwiki.presentation.common.designsystem.theme.SuwikiTheme
 import com.suwiki.presentation.common.designsystem.theme.White
 import com.suwiki.presentation.timetable.R
 import kotlinx.collections.immutable.toPersistentList
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun TimetableEditorRoute(
-  viewModel: TimetableEditorViewModel = hiltViewModel(),
+  viewModel: TimetableEditorViewModel = koinViewModel(),
   popBackStack: () -> Unit,
   handleException: (Throwable) -> Unit,
   onShowToast: (String) -> Unit,
