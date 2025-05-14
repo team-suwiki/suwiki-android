@@ -8,5 +8,6 @@ dependencies {
   implementation(projects.domain.common)
 
   implementation(libs.kotlinx.coroutines.core)
-  implementation(libs.hilt.core)
+
+  implementation(libs.koin.core)
 }

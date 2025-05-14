@@ -13,7 +13,6 @@ compose-bom = "2023.12.00-alpha04"
 compose-material3 = "1.2.0-alpha07"
 activity-compose = "1.7.2"
 compose-stable-marker = "1.0.3"
-androidx-hilt-navigation-compose = "1.0.0"
 compose-rating-bar = "1.3.4"
 compose-toolbar = "2.3.5"
 glance = "1.0.0"
@@ -44,8 +43,6 @@ retrofit = "2.9.0"
 retrofit-kotlinx-serialization-json = "1.0.0"
 okhttp = "4.11.0"
 
-hilt = "2.56"
-hiltExt = "2.56"
 room = "2.7.0"
 
 timber = "5.0.1"
@@ -81,7 +78,6 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-service" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf-plugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
@@ -94,7 +90,6 @@ suwiki-android-application = { id = "suwiki.android.application", version = "uns
 suwiki-android-application-compose = { id = "suwiki.android.application.compose", version = "unspecified" }
 suwiki-android-library = { id = "suwiki.android.library", version = "unspecified" }
 suwiki-android-library-compose = { id = "suwiki.android.library.compose", version = "unspecified" }
-suwiki-android-hilt = { id = "suwiki.android.hilt", version = "unspecified" }
 suwiki-java-library = { id = "suwiki.java.library", version = "unspecified" }
 suwiki-android-presentation-compose = { id = "suwiki.android.presentation.compose", version = "unspecified" }
 suwiki-android-remote = { id = "suwiki.android.remote", version = "unspecified" }
@@ -128,7 +123,6 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-ktx" }
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt-navigation-compose" }
 compose-stable-marker = { group = "com.github.skydoves", name = "compose-stable-marker", version.ref = "compose-stable-marker" }
 compose-rating-bar = { group = "com.github.a914-gowtham", name = "compose-ratingbar", version.ref = "compose-rating-bar" }
 compose-toolbar = { group = "me.onebone", name = "toolbar-compose", version.ref="compose-toolbar" }
@@ -139,12 +133,6 @@ orbit-core = { group = "org.orbit-mvi", name = "orbit-core", version.ref = "orbi
 orbit-viewmodel = { group = "org.orbit-mvi", name = "orbit-viewmodel", version.ref = "orbit" }
 orbit-compose = { group = "org.orbit-mvi", name = "orbit-compose", version.ref = "orbit" }
 orbit-test = { group = "org.orbit-mvi", name = "orbit-test", version.ref = "orbit" }
-
-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltExt" }
-hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
-hilt-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
-hilt-testing-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltExt" }
 
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
@@ -217,7 +205,7 @@ firebase = ["firebase-analytics", "firebase-database"]
 androidx-lifecycle = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx"]
 androidx-navigation = ["navigation-fragment-ktx", "navigation-ui-ktx"]
 coroutine = ["kotlinx-coroutines-android", "kotlinx-coroutines-core"]
-compose = ["ui", "ui-graphics", "ui-tooling-preview", "material3-compose", "coil-compose", "ui-foundation", "activity-compose", "lifecycle-compose", "navigation-compose", "hilt-navigation-compose"]
+compose = ["ui", "ui-graphics", "ui-tooling-preview", "material3-compose", "coil-compose", "ui-foundation", "activity-compose", "lifecycle-compose", "navigation-compose"]
 compose-debug = ["ui-tooling", "ui-test-manifest"]
 glance = ["glance-appwidger", "glance-material3"]
 

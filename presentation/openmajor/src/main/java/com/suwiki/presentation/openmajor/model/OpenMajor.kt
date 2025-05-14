@@ -6,7 +6,6 @@ import java.util.UUID
 data class OpenMajor(
   val id: UUID = UUID.randomUUID(),
   val name: String,
-  val isBookmarked: Boolean = false,
   val isSelected: Boolean = false,
 )
 
@@ -22,14 +21,12 @@ fun List<String>.toBookmarkedOpenMajorList(
 }.map { name ->
   OpenMajor(
     name = name,
-    isBookmarked = true,
     isSelected = selectedOpenMajor == name,
   )
 }.toPersistentList()
 
 fun List<String>.toOpenMajorList(
   searchValue: String,
-  bookmarkedOpenMajorList: List<String>,
   selectedOpenMajor: String,
 ) = filter { openMajor ->
   if (searchValue.isNotEmpty()) {
@@ -40,7 +37,6 @@ fun List<String>.toOpenMajorList(
 }.map { name ->
   OpenMajor(
     name = name,
-    isBookmarked = name in bookmarkedOpenMajorList,
     isSelected = selectedOpenMajor == name,
   )
 }.toPersistentList()

@@ -22,7 +22,6 @@ include(":app-compose")
 
 include(":common:android")
 include(":common:model")
-include(":common:security")
 
 include(":remote:openmajor")
 include(":remote:timetable")

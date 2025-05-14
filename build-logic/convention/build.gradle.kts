@@ -33,10 +33,6 @@ gradlePlugin {
       id = "suwiki.android.library.compose"
       implementationClass = "AndroidLibraryComposeConventionPlugin"
     }
-    register("androidHilt") {
-      id = "suwiki.android.hilt"
-      implementationClass = "AndroidHiltConventionPlugin"
-    }
     register("javaLibrary") {
       id = "suwiki.java.library"
       implementationClass = "JavaLibraryConventionPlugin"

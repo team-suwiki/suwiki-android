@@ -8,14 +8,12 @@ import com.suwiki.domain.timetable.usecase.GetTimetableCellTypeUseCase
 import com.suwiki.domain.timetable.usecase.SetTimetableCellTypeUseCase
 import com.suwiki.presentation.timetable.navigation.argument.toCellEditorArgument
 import com.suwiki.presentation.timetable.timetable.component.timetable.cell.TimetableCellType
-import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import javax.inject.Inject
 
 class TimetableViewModel(
   private val getMainTimetableUseCase: GetMainTimetableUseCase,

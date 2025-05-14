@@ -13,7 +13,6 @@ import com.suwiki.domain.timetable.usecase.InsertTimetableCellUseCase
 import com.suwiki.domain.timetable.usecase.UpdateOpenLectureIfNeedUseCase
 import com.suwiki.presentation.timetable.navigation.argument.toCellEditorArgument
 import com.suwiki.presentation.timetable.openlecture.model.SchoolLevel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.firstOrNull
@@ -22,13 +21,11 @@ import kotlinx.coroutines.sync.withLock
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.annotation.OrbitExperimental
-import org.orbitmvi.orbit.syntax.simple.SimpleSyntax
 import org.orbitmvi.orbit.syntax.simple.blockingIntent
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import javax.inject.Inject
 
 class OpenLectureViewModel(
   private val updateOpenLectureIfNeedUseCase: UpdateOpenLectureIfNeedUseCase,

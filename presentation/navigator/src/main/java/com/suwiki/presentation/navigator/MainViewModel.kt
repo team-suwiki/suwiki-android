@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.suwiki.common.android.recordException
 import com.suwiki.common.model.exception.NetworkException
 import com.suwiki.common.model.exception.UnknownException
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -15,10 +14,8 @@ import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import java.net.ConnectException
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor() : ContainerHost<MainState, MainSideEffect>, ViewModel() {
+class MainViewModel: ContainerHost<MainState, MainSideEffect>, ViewModel() {
   override val container: Container<MainState, MainSideEffect> = container(MainState())
 
   private val mutex = Mutex()

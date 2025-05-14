@@ -35,7 +35,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.suwiki.common.model.timetable.TimetableCellColor
 import com.suwiki.common.model.timetable.TimetableDay
 import com.suwiki.presentation.common.designsystem.component.appbar.SuwikiAppBarWithTitle

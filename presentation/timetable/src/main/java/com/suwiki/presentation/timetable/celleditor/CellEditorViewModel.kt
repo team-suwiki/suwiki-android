@@ -12,7 +12,6 @@ import com.suwiki.domain.timetable.usecase.UpdateTimetableCellUseCase
 import com.suwiki.presentation.common.ui.extension.decodeFromUri
 import com.suwiki.presentation.timetable.navigation.TimetableRoute
 import com.suwiki.presentation.timetable.navigation.argument.CellEditorArgument
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.serialization.json.Json
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
@@ -23,7 +22,6 @@ import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import javax.inject.Inject
 
 class CellEditorViewModel(
   private val insertTimetableCellUseCase: InsertTimetableCellUseCase,

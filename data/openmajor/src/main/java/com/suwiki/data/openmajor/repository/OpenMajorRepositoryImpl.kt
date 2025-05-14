@@ -7,7 +7,6 @@ import com.suwiki.domain.openmajor.repository.OpenMajorRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
 
 class OpenMajorRepositoryImpl(
   private val localOpenMajorDataSource: LocalOpenMajorDataSource,
@@ -34,17 +33,5 @@ class OpenMajorRepositoryImpl(
         setLocalOpenMajorVersion(remoteVersion)
       }
     }
-  }
-
-  override suspend fun getBookmarkedOpenMajorList(): List<String> {
-    return remoteOpenMajorDataSource.getBookmarkedMajorList()
-  }
-
-  override suspend fun bookmarkMajor(majorName: String) {
-    remoteOpenMajorDataSource.bookmarkMajor(majorName)
-  }
-
-  override suspend fun removeBookmarkMajor(majorName: String) {
-    remoteOpenMajorDataSource.removeBookmarkMajor(majorName)
   }
 }

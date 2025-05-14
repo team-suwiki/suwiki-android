@@ -40,7 +40,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.suwiki.common.model.timetable.OpenLecture
 import com.suwiki.common.model.timetable.TimetableCellColor
 import com.suwiki.presentation.common.designsystem.component.appbar.SuwikiAppBarWithTextButton
@@ -55,7 +54,6 @@ import com.suwiki.presentation.common.designsystem.theme.GrayF6
 import com.suwiki.presentation.common.designsystem.theme.Primary
 import com.suwiki.presentation.common.designsystem.theme.SuwikiTheme
 import com.suwiki.presentation.common.designsystem.theme.White
-import com.suwiki.presentation.common.ui.extension.OnBottomReached
 import com.suwiki.presentation.common.ui.extension.suwikiClickable
 import com.suwiki.presentation.common.ui.util.timetableCellColorHexMap
 import com.suwiki.presentation.timetable.R
