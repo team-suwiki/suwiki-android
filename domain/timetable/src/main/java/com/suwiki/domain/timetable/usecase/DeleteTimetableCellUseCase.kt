@@ -4,7 +4,6 @@ import com.suwiki.common.model.timetable.Timetable
 import com.suwiki.common.model.timetable.TimetableCell
 import com.suwiki.domain.common.runCatchingIgnoreCancelled
 import com.suwiki.domain.timetable.repository.TimetableRepository
-import javax.inject.Inject
 
 class DeleteTimetableCellUseCase(
   private val timetableRepository: TimetableRepository,

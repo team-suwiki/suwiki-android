@@ -6,9 +6,8 @@ import androidx.datastore.preferences.protobuf.InvalidProtocolBufferException
 import com.suwiki.local.common.UserPreference
 import java.io.InputStream
 import java.io.OutputStream
-import javax.inject.Inject
 
-class UserPreferenceSerializer @Inject constructor() : Serializer<UserPreference> {
+class UserPreferenceSerializer: Serializer<UserPreference> {
   override val defaultValue: UserPreference = UserPreference.getDefaultInstance()
 
   override suspend fun readFrom(input: InputStream): UserPreference =

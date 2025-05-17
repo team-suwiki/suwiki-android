@@ -8,7 +8,10 @@ android {
 }
 
 dependencies {
-
   api(projects.presentation.openmajor)
   api(projects.presentation.timetable)
+
+  implementation(libs.koin.compose)
+  implementation(libs.koin.compose.viewmodel)
+  implementation(libs.koin.compose.viewmodel.navigation)
 }

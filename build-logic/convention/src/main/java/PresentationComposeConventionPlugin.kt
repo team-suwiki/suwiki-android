@@ -11,7 +11,6 @@ internal class PresentationComposeConventionPlugin : Plugin<Project> {
       with(pluginManager) {
         apply("suwiki.android.library")
         apply("suwiki.android.library.compose")
-        apply("suwiki.android.hilt")
       }
 
       dependencies {

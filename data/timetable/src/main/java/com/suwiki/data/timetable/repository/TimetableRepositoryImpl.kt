@@ -8,7 +8,6 @@ import com.suwiki.common.model.timetable.TimetableDay
 import com.suwiki.data.timetable.datasource.LocalTimetableDataSource
 import com.suwiki.domain.timetable.repository.TimetableRepository
 import kotlinx.coroutines.flow.firstOrNull
-import javax.inject.Inject
 
 class TimetableRepositoryImpl (
   private val localTimetableDataSource: LocalTimetableDataSource,

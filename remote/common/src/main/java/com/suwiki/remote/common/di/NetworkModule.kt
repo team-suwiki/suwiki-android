@@ -2,13 +2,7 @@ package com.suwiki.remote.common.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.suwiki.remote.common.BuildConfig
-import com.suwiki.remote.common.authenticator.TokenAuthenticator
-import com.suwiki.remote.common.interceptor.AuthenticationInterceptor
 import com.suwiki.remote.common.retrofit.ResultCallAdapterFactory
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -17,8 +11,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-import javax.inject.Qualifier
-import javax.inject.Singleton
 import org.koin.dsl.module
 
 val networkModule = module {
@@ -74,8 +66,6 @@ val networkModule = module {
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
             .addInterceptor(get<HttpLoggingInterceptor>())
-            .addInterceptor(get<AuthenticationInterceptor>())
-            .authenticator(get<TokenAuthenticator>())
             .build()
     }
 

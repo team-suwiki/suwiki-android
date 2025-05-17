@@ -15,7 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.suwiki.common.model.timetable.Timetable
 import com.suwiki.presentation.common.designsystem.component.appbar.SuwikiAppBarWithTextButton
 import com.suwiki.presentation.common.designsystem.component.container.SuwikiEditContainer

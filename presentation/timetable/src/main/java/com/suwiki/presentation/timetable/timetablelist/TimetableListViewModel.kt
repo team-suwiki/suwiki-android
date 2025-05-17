@@ -6,7 +6,6 @@ import com.suwiki.domain.timetable.usecase.DeleteTimetableUseCase
 import com.suwiki.domain.timetable.usecase.GetAllTimetableUseCase
 import com.suwiki.domain.timetable.usecase.SetMainTimetableCreateTime
 import com.suwiki.presentation.timetable.navigation.argument.toTimetableEditorArgument
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.minus
 import kotlinx.collections.immutable.toPersistentList
 import org.orbitmvi.orbit.Container
@@ -15,7 +14,6 @@ import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import javax.inject.Inject
 
 class TimetableListViewModel(
   private val getAllTimetableUseCase: GetAllTimetableUseCase,

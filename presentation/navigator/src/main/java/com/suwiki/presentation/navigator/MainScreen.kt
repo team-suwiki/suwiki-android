@@ -1,31 +1,12 @@
 package com.suwiki.presentation.navigator
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideIn
-import androidx.compose.animation.slideOut
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import com.suwiki.presentation.common.designsystem.component.dialog.SuwikiDialog
 import com.suwiki.presentation.common.ui.extension.versionCode
@@ -34,13 +15,14 @@ import com.suwiki.presentation.navigator.component.SuwikiToast
 import com.suwiki.presentation.openmajor.navigation.OpenMajorRoute
 import com.suwiki.presentation.openmajor.navigation.openMajorNavGraph
 import com.suwiki.presentation.timetable.navigation.timetableNavGraph
+import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 internal fun MainScreen(
   modifier: Modifier = Modifier,
-  viewModel: MainViewModel = hiltViewModel(),
+  viewModel: MainViewModel = koinViewModel(),
   navigator: MainNavigator = rememberMainNavigator(),
 ) {
   val uiState = viewModel.collectAsState().value

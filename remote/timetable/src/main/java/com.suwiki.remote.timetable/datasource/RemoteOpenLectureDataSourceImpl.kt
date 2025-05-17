@@ -5,7 +5,6 @@ import com.suwiki.data.timetable.OpenLectureRaw
 import com.suwiki.data.timetable.datasource.RemoteOpenLectureDataSource
 import kotlinx.coroutines.tasks.await
 import okhttp3.internal.toLongOrDefault
-import javax.inject.Inject
 
 class RemoteOpenLectureDataSourceImpl(
   private val firebaseDatabase: FirebaseDatabase,

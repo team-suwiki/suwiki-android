@@ -6,10 +6,6 @@ import com.suwiki.local.common.database.database.TimetableDatabase
 import com.suwiki.local.common.database.dao.OpenMajorDao
 import com.suwiki.local.common.database.dao.TimeTableDao
 import com.suwiki.local.common.database.database.OpenLectureDatabase
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import org.koin.dsl.module
 
 val daoModule = module {

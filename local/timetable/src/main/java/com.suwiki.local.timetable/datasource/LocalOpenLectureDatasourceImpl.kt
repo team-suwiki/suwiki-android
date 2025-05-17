@@ -4,20 +4,15 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
-import com.suwiki.common.android.Dispatcher
-import com.suwiki.common.android.SuwikiDispatchers
 import com.suwiki.common.model.timetable.OpenLecture
 import com.suwiki.data.timetable.datasource.LocalOpenLectureDataSource
 import com.suwiki.local.common.database.database.OpenLectureDatabase
-import com.suwiki.local.common.datastore.di.NormalDataStore
 import com.suwiki.local.timetable.converter.toEntity
 import com.suwiki.local.timetable.converter.toModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class LocalOpenLectureDatasourceImpl(
   private val dataStore: DataStore<Preferences>,

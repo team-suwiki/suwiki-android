@@ -10,7 +10,6 @@ internal class RemoteConventionPlugin : Plugin<Project> {
     with(target) {
       with(pluginManager) {
         apply("suwiki.android.library")
-        apply("suwiki.android.hilt")
       }
 
       dependencies {

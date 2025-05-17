@@ -2,7 +2,6 @@ package com.suwiki.domain.timetable.usecase
 
 import com.suwiki.domain.common.runCatchingIgnoreCancelled
 import com.suwiki.domain.timetable.repository.OpenLectureRepository
-import javax.inject.Inject
 
 class UpdateOpenLectureIfNeedUseCase(
   private val openLectureRepository: OpenLectureRepository,

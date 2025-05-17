@@ -6,6 +6,5 @@ import com.suwiki.remote.timetable.datasource.RemoteOpenLectureDataSourceImpl
 import org.koin.dsl.module
 
 val remoteTimetableDataSourceModule = module {
-  includes(firebaseDatabaseModule)
   single<RemoteOpenLectureDataSource> { RemoteOpenLectureDataSourceImpl(get()) }
 }

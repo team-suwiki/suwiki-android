@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.map
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
-import javax.inject.Inject
 
 class OpenLectureRepositoryImpl(
   private val remoteOpenLectureDataSource: RemoteOpenLectureDataSource,

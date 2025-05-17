@@ -2,7 +2,6 @@
 plugins {
   alias(libs.plugins.suwiki.android.application)
   alias(libs.plugins.suwiki.android.application.compose)
-  alias(libs.plugins.suwiki.android.hilt)
   alias(libs.plugins.google.services)
   alias(libs.plugins.firebase.crashlytics)
   alias(libs.plugins.compose.compiler)
@@ -25,9 +24,11 @@ dependencies {
 
   implementation(projects.remote.openmajor)
   implementation(projects.remote.timetable)
+  implementation(projects.remote.common)
 
   implementation(projects.local.openmajor)
   implementation(projects.local.timetable)
+  implementation(projects.local.common)
 
   implementation(projects.data.openmajor)
   implementation(projects.data.timetable)

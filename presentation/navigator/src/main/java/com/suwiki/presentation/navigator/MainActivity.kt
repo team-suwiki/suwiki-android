@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import com.suwiki.presentation.common.designsystem.theme.SuwikiTheme
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : ComponentActivity() {
 

@@ -3,11 +3,8 @@ package com.suwiki.domain.openmajor.usecase
 import com.suwiki.domain.openmajor.repository.OpenMajorRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class GetOpenMajorListUseCase @Inject constructor(
-  private val openMajorRepository: OpenMajorRepository,
-) {
+class GetOpenMajorListUseCase (private val openMajorRepository: OpenMajorRepository, ) {
   /**
    * 가장 먼저 LocalOpenMajorList를 emit합니다.
    * 그 이후 LocalVersion과 RemoteVersion을 비교한 후
