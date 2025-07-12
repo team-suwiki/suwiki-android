@@ -58,6 +58,7 @@ composeApp/src/
 ### Key Technologies
 
 - **UI**: Compose Multiplatform with Material 3
+- **WebView**: Compose WebView Multiplatform for embedded web content
 - **Database**: Room with SQLite, platform-specific factories
 - **Networking**: Firebase Realtime Database
 - **Storage**: DataStore Preferences
@@ -85,8 +86,17 @@ mviStore.sideEffect(SideEffect.ShowToast("Message"))
 ### Navigation
 
 - Type-safe navigation with argument passing
+- Bottom navigation with two main tabs: Timetable and WebView
 - Navigation graphs defined per feature in `navigation/` directories
 - Navigation handled in `MainNavigator.kt`
+- State preservation across tab switches using `saveState = true` and `restoreState = true`
+
+### WebView Implementation
+
+- Uses `compose-webview-multiplatform` library for cross-platform WebView
+- WebView state preserved across navigation with `rememberWebViewState`
+- WebView only shows on main tab screen (hidden on sub-screens)
+- Default URL: `https://www.suwon.ac.kr`
 
 ### Dependency Injection
 

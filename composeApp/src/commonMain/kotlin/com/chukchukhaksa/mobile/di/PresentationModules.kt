@@ -7,6 +7,7 @@ import com.chukchukhaksa.mobile.presentation.timetable.openlecture.OpenLectureVi
 import com.chukchukhaksa.mobile.presentation.timetable.timetable.TimetableViewModel
 import com.chukchukhaksa.mobile.presentation.timetable.timetableeditor.TimetableEditorViewModel
 import com.chukchukhaksa.mobile.presentation.timetable.timetablelist.TimetableListViewModel
+import com.chukchukhaksa.mobile.presentation.webview.WebViewViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -18,4 +19,5 @@ val presentationModule = module {
     viewModelOf(::CellEditorViewModel)
     viewModelOf(::OpenLectureViewModel)
     viewModelOf(::OpenMajorViewModel)
+    viewModelOf(::WebViewViewModel)
 }

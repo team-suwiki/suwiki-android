@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
+import com.chukchukhaksa.mobile.common.webview.rememberWebViewState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,8 @@ import com.chukchukhaksa.mobile.common.ui.collectWithLifecycle
 import com.chukchukhaksa.mobile.presentation.openmajor.navigation.OpenMajorRoute
 import com.chukchukhaksa.mobile.presentation.openmajor.navigation.openMajorNavGraph
 import com.chukchukhaksa.mobile.presentation.timetable.navigation.timetableNavGraph
+import com.chukchukhaksa.mobile.presentation.webview.navigation.webViewNavGraph
+import com.chukchukhaksa.mobile.common.designsystem.component.bottomnav.MainBottomNavigation
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.KoinContext
 import org.koin.compose.viewmodel.koinViewModel
@@ -41,6 +44,10 @@ fun App(
         KoinContext {
             val uiState = viewModel.mviStore.uiState.collectAsState().value
             val uriHandler = LocalUriHandler.current
+            
+            // Create shared WebView state that persists across navigation
+            val sharedWebViewState = rememberWebViewState("https://www.suwon.ac.kr")
+            
             viewModel.mviStore.sideEffects.collectWithLifecycle { sideEffect ->
                 when (sideEffect) {
                     is MainSideEffect.OpenUrl -> uriHandler.openUri(sideEffect.url)
@@ -55,6 +62,13 @@ fun App(
                 containerColor = White,
                 contentWindowInsets = WindowInsets(0.dp),
                 modifier = modifier,
+                bottomBar = {
+                    MainBottomNavigation(
+                        navController = navigator.navController,
+                        onNavigateToTimetable = navigator::navigateToTimetable,
+                        onNavigateToWebView = navigator::navigateToWebViewTab,
+                    )
+                },
                 content = { innerPadding ->
                     NavHost(
                         navController = navigator.navController,
@@ -84,6 +98,13 @@ fun App(
                             onShowToast = viewModel::onShowToast,
                             navigateOpenMajor = navigator::navigateOpenMajor,
                             navigateCellEditor = navigator::navigateCellEditor,
+                        )
+
+                        webViewNavGraph(
+                            padding = innerPadding,
+                            sharedWebViewState = sharedWebViewState,
+                            handleException = viewModel::handleException,
+                            onShowToast = viewModel::onShowToast,
                         )
                     }
 
