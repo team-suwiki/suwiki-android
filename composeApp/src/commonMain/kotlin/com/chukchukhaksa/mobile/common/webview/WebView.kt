@@ -8,4 +8,5 @@ expect fun WebView(
   state: WebViewState,
   modifier: Modifier = Modifier,
   useSingleton: Boolean = false,
+  cookies: List<WebViewCookie> = emptyList(),
 )
